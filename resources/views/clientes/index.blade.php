@@ -1,7 +1,25 @@
 
 <x-layout>
-    <h1>Cadastrar Clientes</h1>
+    
+    <div class="border-b p-2 my-2 grid grid-cols-5 text-center">
+        <p>id</p>
+        <p>nome</p>
+        <p>cpf</p>
+        <p>sexo</p>
+        <p>email</p>
+    </div>
+    @foreach ($clientes as $cliente)
+        <div class="border-b p-2  grid grid-cols-5 text-center">
+            <p>{{$cliente->id}}</p>
+            <p>{{$cliente->nome}}</p>
+            <p>{{$cliente->cpf}}</p>
+            <p>{{$cliente->sexo}}</p>
+            <p>{{$cliente->email}}</p>
+        </div>
+    @endforeach
 
+    
+    <h1 class="my-5">Cadastrar Clientes</h1>
     <div class="flex justify-center">
         <form action="{{route('cliente.store')}}" method="post" class="flex flex-col items-end">
             @csrf

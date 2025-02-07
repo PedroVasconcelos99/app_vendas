@@ -17,7 +17,10 @@ class ClienteFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nome' => $this->faker->name(),
+            'cpf' => $this->faker->numerify('###########'),
+            'sexo' => $this->faker->randomElement(['M', 'F']),
+            'email' => $this->faker->unique()->safeEmail(),
         ];
     }
 }

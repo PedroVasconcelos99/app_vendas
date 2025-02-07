@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @source "../views";
+
+body {
+    margin: 0 2rem;
+}
