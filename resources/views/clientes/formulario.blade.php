@@ -1,7 +1,7 @@
 <x-layout>
     <h1 class="my-5">Cadastrar Clientes</h1>
     <div class="flex justify-center">
-        <form action="{{route('cliente.store')}}" method="post" class="flex flex-col items-end">
+        <form action="{{route('clientes.store')}}" method="post" class="flex flex-col items-end">
             @csrf
             <div class="mb-4">
                 <label for="nome">nome</label>

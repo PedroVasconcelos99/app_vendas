@@ -12,7 +12,7 @@
         <nav>
             <div class="flex items-center gap-4">
                <a href="{{route('home')}}" class="">Home</a>
-               <a href="{{route('cliente.index')}}" class="">Clientes</a>
+               <a href="{{route('clientes.index')}}" class="">Clientes</a>
 
            </div>
         </nav>

@@ -1,8 +1,8 @@
 <x-layout>
     <h1 class="my-5">Editar Cliente</h1>
-    <a href="{{route('cliente.index')}}" class="mb-2">Voltar</a>
+    <a href="{{route('clientes.index')}}" class="mb-2">Voltar</a>
     <div class="flex justify-center">
-        <form action="{{route('cliente.update',$cliente)}}" method="post" class="flex flex-col items-end">
+        <form action="{{route('clientes.update',$cliente)}}" method="post" class="flex flex-col items-end">
             @csrf
             @method('PUT')
             <div class="mb-4">
