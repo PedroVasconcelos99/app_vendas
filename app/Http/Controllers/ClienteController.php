@@ -61,7 +61,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        return view('clientes.editar', ['cliente' => $cliente]);
     }
 
     /**
@@ -69,7 +69,18 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
-        //
+        $fields = $request->validate([
+            'nome'=>['required'],
+            'cpf'=>['required'],
+            'sexo'=>['required'],
+            'email' => ['required', 'email', 'unique:clientes,email,' . $cliente->id],
+            
+        ]);
+
+        // dd($fields);
+       ; 
+        $cliente->update($fields);
+        return redirect()->route('cliente.index');
     }
 
     /**

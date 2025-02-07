@@ -16,11 +16,14 @@
             <p>{{$cliente->cpf}}</p>
             <p>{{$cliente->sexo}}</p>
             <p>{{$cliente->email}}</p>
-            <form action="{{ route('cliente.destroy', $cliente) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button class="text-red-700 cursor-pointer">Excluir</button>
-            </form>
+            <div>
+                <a class="text-green-500" href="{{ route('cliente.edit', $cliente)}}">Editar</a>
+                <form action="{{ route('cliente.destroy', $cliente) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="text-red-700 cursor-pointer">Excluir</button>
+                </form>
+            </div>
         </div>
     @endforeach
 </x-layout>
