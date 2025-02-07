@@ -25,7 +25,7 @@ class ClienteController extends Controller
     public function create()
     {
         //
-
+        return view('clientes.formulario');
     }
 
     /**
@@ -45,7 +45,7 @@ class ClienteController extends Controller
         // dd($fields);
        ; 
         Cliente::create($fields);
-        dd('ok');
+        return redirect()->route('cliente.index');
     }
 
     /**
@@ -77,6 +77,8 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->delete();
+
+        return redirect()->route('cliente.index');
     }
 }
