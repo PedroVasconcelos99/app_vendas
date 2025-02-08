@@ -56,17 +56,27 @@ class VendedoresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vendedores $vendedores)
+    public function edit(Vendedores $vendedor)
     {
-        //
+        $lojas = lojas::all();
+        return view('vendedores.editar', compact('vendedor', 'lojas'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVendedoresRequest $request, Vendedores $vendedores)
+    public function update(UpdateVendedoresRequest $request, Vendedores $vendedor)
     {
-        //
+        
+        $fields = $request->validate([
+            'id_loja'=>['required'],
+            'nome'=>['required'],
+            'cpf'=>['required'],
+        ]);
+        // dd($fields);
+
+        $vendedor->update($fields);
+        return redirect()->route('vendedores.index');
     }
 
     /**
