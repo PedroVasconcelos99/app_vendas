@@ -34,10 +34,10 @@
             <div class="mb-4">
                 <label for="email">email</label>
                 <input type="text" name="email"  value="{{old('email')}}" class="border @error('email') border-red-500 @enderror">
+                @error('email')
+                    <p class="text-red-500">{{$message}}</p> 
+                @enderror
             </div>
-            @error('email')
-            <p class="text-red-500">{{$message}}</p> 
-        @enderror
             <button class="block mx-auto my-0">Cadastrar</button>
         </form>
     </div>
