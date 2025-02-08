@@ -1,7 +1,7 @@
 <x-layout>
     <h1 class="my-5">Cadastrar Clientes</h1>
     <div class="flex justify-center">
-        <form action="{{route('clientes.store')}}" method="post" class="flex flex-col items-end">
+        <form id="cadastrar_cliente" action="{{route('clientes.store')}}" method="post" class="flex flex-col items-end">
             @csrf
             <div class="mb-4">
                 <label for="nome">nome</label>
@@ -15,7 +15,7 @@
 
             <div class="mb-4">
                 <label for="cpf">cpf</label>
-                <input type="text" name="cpf" value="{{old('cpf')}}" class="border @error('cpf') border-red-500 @enderror">
+                <input type="text" name="cpf" id="cpf" value="{{old('cpf')}}" class="border @error('cpf') border-red-500 @enderror">
                 
                 @error('cpf')
                     <p class="text-red-500">{{$message}}</p> 
@@ -41,4 +41,5 @@
             <button class="block mx-auto my-0">Cadastrar</button>
         </form>
     </div>
+    @vite('resources/js/validarCpf.js')
 </x-layout>
