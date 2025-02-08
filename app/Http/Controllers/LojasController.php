@@ -61,17 +61,34 @@ class LojasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(lojas $lojas)
+    public function edit(lojas $loja)
     {
         //
+        // dd($loja);
+        return view('lojas.editar', ['loja' => $loja]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatelojasRequest $request, lojas $lojas)
+    public function update(UpdatelojasRequest $request, lojas $loja)
     {
         //
+        $fields = $request->validate([
+            'nome'=>['required'],
+            'cnpj'=>['required'],
+            'cep'=>['required'],
+            'endereco'=>['required'],
+            'bairro'=>['required'],
+            'cidade'=>['required'],
+            'uf'=>['required'],
+            
+        ]);
+
+        // dd($fields);
+       ; 
+        $loja->update($fields);
+        return redirect()->route('lojas.index');
     }
 
     /**

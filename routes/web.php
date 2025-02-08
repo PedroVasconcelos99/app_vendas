@@ -9,6 +9,3 @@ Route::resource('clientes', ClientesController::class);
 Route::resource('lojas', LojasController::class);
 
 Route::view('/','index')->name('home');
-// Route::view('/register','auth.register')->name('register');
-
-// Route::post('/register', [AuthController::class, 'register']);
