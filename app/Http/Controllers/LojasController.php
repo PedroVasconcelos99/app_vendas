@@ -14,7 +14,8 @@ class LojasController extends Controller
     public function index()
     {
         //
-        return view('lojas.index');
+        $lojas = lojas::all();
+        return view('lojas.index', ['lojas' => $lojas]);
     }
 
     /**
