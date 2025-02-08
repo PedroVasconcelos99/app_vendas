@@ -94,8 +94,10 @@ class LojasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(lojas $lojas)
+    public function destroy(lojas $loja)
     {
-        //
+        $loja->delete();
+
+        return redirect()->route('lojas.index');
     }
 }
