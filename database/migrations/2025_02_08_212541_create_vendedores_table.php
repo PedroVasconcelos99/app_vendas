@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('vendedores', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_loja')->constrained('lojas')->cascadeOnDelete();
+            $table->string('nome');
+            $table->string('cpf');
             $table->timestamps();
         });
     }

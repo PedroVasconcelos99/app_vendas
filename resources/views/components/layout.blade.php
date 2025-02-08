@@ -14,6 +14,7 @@
                <a href="{{route('home')}}" class="">Home</a>
                <a href="{{route('clientes.index')}}" class="">Clientes</a>
                <a href="{{route('lojas.index')}}" class="">Lojas</a>
+               <a href="{{route('vendedores.index')}}" class="">vendedores</a>
 
            </div>
         </nav>

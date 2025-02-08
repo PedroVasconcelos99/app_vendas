@@ -9,4 +9,16 @@ class Vendedores extends Model
 {
     /** @use HasFactory<\Database\Factories\VendedoresFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'id_loja',
+        'nome',
+        'cpf',
+    
+    ];
+
+    public function loja()
+    {
+        return $this->belongsTo(lojas::class, 'id_loja');
+    }
 }

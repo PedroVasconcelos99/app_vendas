@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vendedores;
 use App\Http\Requests\StoreVendedoresRequest;
 use App\Http\Requests\UpdateVendedoresRequest;
+use App\Models\lojas;
 
 class VendedoresController extends Controller
 {
@@ -12,8 +13,10 @@ class VendedoresController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {   
+        $vendedores = Vendedores::with('loja')->get();
+        // dd($vendedores);
+        return view('vendedores.index', compact('vendedores'));
     }
 
     /**
@@ -21,7 +24,8 @@ class VendedoresController extends Controller
      */
     public function create()
     {
-        //
+        $lojas = lojas::all();
+        return view('vendedores.cadastrar_vendedor', compact('lojas'));
     }
 
     /**
@@ -29,7 +33,16 @@ class VendedoresController extends Controller
      */
     public function store(StoreVendedoresRequest $request)
     {
-        //
+        
+        $fields = $request->validate([
+            'id_loja'=>['required'],
+            'nome'=>['required'],
+            'cpf'=>['required'],
+        ]);
+        // dd($fields);
+
+        Vendedores::create($fields);
+        return redirect()->route('vendedores.index');
     }
 
     /**
