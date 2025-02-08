@@ -1,7 +1,7 @@
 <x-layout>
     <h1 class="my-5">Cadastrar Loja</h1>
     <div class="flex justify-center">
-        <form id="cadastrar_cliente" action="{{route('lojas.store')}}" method="post" class="flex flex-col items-end">
+        <form id="cadastrar_loja" action="{{route('lojas.store')}}" method="post" class="flex flex-col items-end">
             @csrf
             <div class="mb-4">
                 <label for="nome">nome</label>
@@ -65,5 +65,5 @@
             <button class="block mx-auto my-0">Cadastrar</button>
         </form>
     </div>
-    @vite('resources/js/validarcnpj.js')
+    @vite('resources/js/validarCnpj.js')
 </x-layout>
