@@ -24,7 +24,7 @@
 
             <div class="mb-4">
                 <label for="cep">CEP</label>
-                <input type="cep" name="cep" class="border @error('cep') border-red-500 @enderror">
+                <input type="cep" name="cep" id="cep"  class="border @error('cep') border-red-500 @enderror">
                 
                 @error('cep')
                     <p class="text-red-500">{{$message}}</p> 
@@ -33,7 +33,7 @@
 
             <div class="mb-4">
                 <label for="endereco">endereço</label>
-                <input type="text" name="endereco"  value="{{old('endereco')}}" class="border @error('endereco') border-red-500 @enderror">
+                <input type="text" name="endereco" id="endereco" value="{{old('endereco')}}" class="border @error('endereco') border-red-500 @enderror">
                 @error('endereco')
                     <p class="text-red-500">{{$message}}</p> 
                 @enderror
@@ -41,7 +41,7 @@
 
             <div class="mb-4">
                 <label for="bairro">bairro</label>
-                <input type="text" name="bairro"  value="{{old('bairro')}}" class="border @error('bairro') border-red-500 @enderror">
+                <input type="text" name="bairro" id="bairro"  value="{{old('bairro')}}" class="border @error('bairro') border-red-500 @enderror">
                 @error('bairro')
                     <p class="text-red-500">{{$message}}</p> 
                 @enderror
@@ -49,7 +49,7 @@
 
             <div class="mb-4">
                 <label for="cidade">cidade</label>
-                <input type="text" name="cidade"  value="{{old('cidade')}}" class="border @error('cidade') border-red-500 @enderror">
+                <input type="text" name="cidade" id="cidade" value="{{old('cidade')}}" class="border @error('cidade') border-red-500 @enderror">
                 @error('cidade')
                     <p class="text-red-500">{{$message}}</p> 
                 @enderror
@@ -57,7 +57,7 @@
 
             <div class="mb-4">
                 <label for="uf">UF</label>
-                <input type="text" name="uf"  value="{{old('uf')}}" class="border @error('uf') border-red-500 @enderror">
+                <input type="text" name="uf" id="uf"  value="{{old('uf')}}" class="border @error('uf') border-red-500 @enderror">
                 @error('uf')
                     <p class="text-red-500">{{$message}}</p> 
                 @enderror
@@ -66,4 +66,5 @@
         </form>
     </div>
     @vite('resources/js/validarCnpj.js')
+    @vite('resources/js/buscarCep.js')
 </x-layout>

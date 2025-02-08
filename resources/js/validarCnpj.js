@@ -1,4 +1,3 @@
-console.log('Formulario page script loaded');
 
 // Função para validar CNPJ
 function validaCNPJ(cnpj) {
