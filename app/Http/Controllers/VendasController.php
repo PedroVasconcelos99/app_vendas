@@ -134,8 +134,14 @@ class VendasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vendas $vendas)
+    public function destroy(Vendas $venda)
     {
-        //
+            
+        VendaProduto::where('id_venda', $venda->id)->delete();
+
+        
+        $venda->delete();
+
+        return redirect()->route('vendas.index')->with('success', 'Venda excluída com sucesso!');
     }
 }
