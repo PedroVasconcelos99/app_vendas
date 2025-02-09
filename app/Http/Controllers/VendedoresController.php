@@ -82,8 +82,10 @@ class VendedoresController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vendedores $vendedores)
+    public function destroy(Vendedores $vendedor)
     {
-        //
+        $vendedor->delete();
+
+        return redirect()->route('vendedores.index');
     }
 }
