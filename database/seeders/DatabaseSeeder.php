@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cliente;
+use App\Models\Clientes;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        Cliente::factory(10)->create();
+        Clientes::factory(10)->create();
     }
 }
