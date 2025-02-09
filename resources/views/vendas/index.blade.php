@@ -14,9 +14,9 @@
     @foreach ($vendas as $venda)
         <div class="border-b p-2 grid grid-cols-8 text-center">
             <p>{{ $venda->id }}</p>
-            <p>{{ $venda->cliente_id }}</p>
-            <p>{{ $venda->loja_id }}</p>
-            <p>{{ $venda->vendedor_id }}</p>
+            <p>{{ $venda->cliente->nome }}</p>
+            <p>{{ $venda->loja->nome }}</p>
+            <p>{{ $venda->vendedor->nome}}</p>
             <p>{{ $venda->data_venda }}</p>
             <p>{{ $venda->valor_total }}</p>
             <p>{{ $venda->forma_pagamento }}</p>
