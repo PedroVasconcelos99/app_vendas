@@ -53,17 +53,27 @@ class ProdutosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Produtos $produtos)
+    public function edit(Produtos $produto)
     {
-        //
+        return view('produtos.editar', [
+            'produto' => $produto
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdutosRequest $request, Produtos $produtos)
+    public function update(UpdateProdutosRequest $request, Produtos $produto)
     {
-        //
+        $fields = $request->validate([
+            'nome' => 'required|string|max:255',
+            'cor' => 'required|string|max:255',
+            'valor' => 'required|numeric',
+        ]);
+        // dd($fields);
+        $produto->update($fields);
+
+        return redirect()->route('produtos.index');
     }
 
     /**
