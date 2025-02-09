@@ -10,6 +10,7 @@ export default defineConfig({
                     'resources/js/validarCpf.js', 
                     'resources/js/validarCnpj.js',
                     'resources/js/buscarCep.js',
+                    'resources/js/adicionarProduto.js',
                 ],
             refresh: true,
         }),
