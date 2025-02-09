@@ -13,7 +13,9 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        //
+        return view('produtos.index', [
+            'produtos' => Produtos::all()
+        ]);
     }
 
     /**
