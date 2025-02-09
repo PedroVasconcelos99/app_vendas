@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cliente_id')->constrained('clientes')->cascadeOnDelete();
+            $table->foreignId('loja_id')->constrained('lojas')->cascadeOnDelete();
+            $table->foreignId('vendedor_id')->constrained('vendedores')->cascadeOnDelete();
+            $table->date('data_venda');
+            $table->decimal('valor_total', 8, 2);
+            $table->text('observacao')->nullable();
+            $table->enum('forma_pagamento', ['Dinheiro', 'Crédito', 'Débito']);
             $table->timestamps();
         });
     }
