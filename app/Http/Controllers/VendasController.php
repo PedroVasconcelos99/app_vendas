@@ -81,17 +81,54 @@ class VendasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vendas $vendas)
+    public function edit(Vendas $venda)
     {
-        //
+        $clientes = Clientes::all();
+        $lojas = lojas::all();
+        $vendedores = Vendedores::all();
+        $produtos = Produtos::all();
+        $vendaProdutos = VendaProduto::where('id_venda', $venda->id)->get();
+        // dd($vendaProdutos);
+        return view('vendas.editar', compact('venda', 'clientes', 'lojas', 'vendedores', 'produtos', 'vendaProdutos'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateVendasRequest $request, Vendas $vendas)
+    public function update(UpdateVendasRequest $request, Vendas $venda)
     {
-        //
+        $fields = $request->validate([
+            'cliente_id' => ['required', 'exists:clientes,id'],
+            'loja_id' => ['required', 'exists:lojas,id'],
+            'vendedor_id' => ['required', 'exists:vendedores,id'],
+            'data_venda' => ['required', 'date'],
+            'valor_total' => ['required', 'numeric'],
+            'observacao' => ['nullable', 'string'],
+            'forma_pagamento' => ['required', 'in:Dinheiro,Crédito,Débito'],
+            'produtos' => ['required', 'array'],
+            'produtos.*.id' => ['required', 'exists:produtos,id'],
+            'produtos.*.quantidade' => ['required', 'integer', 'min:1'],
+        ]);
+    
+        $venda->update($fields);
+    
+       
+        VendaProduto::where('id_venda', $venda->id)->delete();
+    
+      
+        foreach ($fields['produtos'] as $produto) {
+            $produtoModel = Produtos::find($produto['id']);
+            $total = $produtoModel->valor * $produto['quantidade'];
+    
+            VendaProduto::create([
+                'id_venda' => $venda->id,
+                'id_produto' => $produto['id'],
+                'quantidade' => $produto['quantidade'],
+                'total' => $total,
+            ]);
+        }
+    
+        return redirect()->route('vendas.index');
     }
 
     /**
