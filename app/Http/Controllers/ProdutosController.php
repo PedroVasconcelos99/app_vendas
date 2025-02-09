@@ -23,7 +23,7 @@ class ProdutosController extends Controller
      */
     public function create()
     {
-        //
+        return view('produtos.cadastrar_produto');
     }
 
     /**
@@ -31,7 +31,15 @@ class ProdutosController extends Controller
      */
     public function store(StoreProdutosRequest $request)
     {
-        //
+        $fields = $request->validate([
+            'nome' => ['required','string'],
+            'cor' => ['required','string'],
+            'valor' => ['required', 'numeric'],
+        ]);
+        // dd($fields);
+        Produtos::create($fields);
+
+        return redirect()->route('produtos.index');
     }
 
     /**
