@@ -4,7 +4,7 @@
         <a href="{{ route('clientes.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700 transition-all duration-300">Voltar</a>
     </div>
     <div class="flex justify-center">
-        <form id="cadastrar_cliente"action="{{ route('clientes.update', $cliente) }}" method="post" class="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
+        <form id="cadastrar_pessoa"action="{{ route('clientes.update', $cliente) }}" method="post" class="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
             @csrf
             @method('PUT')
             <div class="mb-4">

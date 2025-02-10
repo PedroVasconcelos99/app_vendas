@@ -52,7 +52,7 @@ function validaCPF(cpf) {
 
 // Validação de CPF no formulário de cadastro de cliente
   document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('cadastrar_cliente').addEventListener('submit', function(e) {
+  document.getElementById('cadastrar_pessoa').addEventListener('submit', function(e) {
     let cpf = document.getElementById('cpf').value;
     if (!validaCPF(cpf)) {
       e.preventDefault();  

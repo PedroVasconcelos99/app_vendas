@@ -4,7 +4,7 @@
     </div>
     <h1 class="my-5 text-2xl font-bold text-center">Cadastrar Clientes</h1>
     <div class="flex  justify-center">
-        <form id="cadastrar_cliente" action="{{ route('clientes.store') }}" method="post" class="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
+        <form id="cadastrar_pessoa" action="{{ route('clientes.store') }}" method="post" class="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
             @csrf
             <div class="mb-4">
                 <label for="nome" class="block text-gray-700 font-bold mb-2">Nome</label>
