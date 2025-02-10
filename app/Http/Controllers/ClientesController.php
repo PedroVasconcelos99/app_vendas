@@ -39,13 +39,18 @@ class ClientesController extends Controller
             'cpf'=>['required'],
             'sexo'=>['required'],
             'email'=>['required','email','unique:clientes'],
-            
+        ],
+        [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'sexo.required' => 'O campo sexo é obrigatório.',
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'email.email' => 'Por favor, insira um endereço de e-mail válido.',
         ]);
 
         // dd($fields);
-       ; 
+       
         Clientes::create($fields);
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso!');
     }
 
     /**
@@ -75,12 +80,18 @@ class ClientesController extends Controller
             'sexo'=>['required'],
             'email' => ['required', 'email', 'unique:clientes,email,' . $cliente->id],
             
+        ],
+        [
+            'nome.required' => 'O campo nome é obrigatório.',
+            'sexo.required' => 'O campo sexo é obrigatório.',
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'email.email' => 'Por favor, insira um endereço de e-mail válido.',
         ]);
 
         // dd($fields);
        ; 
         $cliente->update($fields);
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
     /**
@@ -90,6 +101,6 @@ class ClientesController extends Controller
     {
         $cliente->delete();
 
-        return redirect()->route('clientes.index');
+        return redirect()->route('clientes.index')->with('success', 'Cliente removido com sucesso!');
     }
 }
