@@ -3,13 +3,13 @@ let produtoIndex = 0;
 window.adicionarProduto = function() {
     const produtosDiv = document.getElementById('produtos');
     const produtoTemplate = `
-        <div class="flex items-center mb-2" data-index="${produtoIndex}">
+        <div class="flex items-center justify-between mb-2" data-index="${produtoIndex}">
             <select name="produtos[${produtoIndex}][id]" class="border mr-2" onchange="calcularValorTotal()">
                 <option value="">Selecione um produto</option>
                 ${produtosOptions}
             </select>
             <input type="number" name="produtos[${produtoIndex}][quantidade]" class="border ml-2" placeholder="Quantidade" min="1" onchange="calcularValorTotal()">
-            <button type="button" onclick="removerProduto(${produtoIndex})" class="text-red-500 cursor-pointer">Remover</button>
+            <button type="button" onclick="removerProduto(${produtoIndex})" class="text-red-500 cursor-pointer hover:text-red-700">remover</button>
         </div>
     `;
     produtosDiv.insertAdjacentHTML('beforeend', produtoTemplate);

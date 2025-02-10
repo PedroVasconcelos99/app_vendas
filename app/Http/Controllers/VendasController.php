@@ -52,6 +52,15 @@ class VendasController extends Controller
             'produtos' => ['required', 'array'],
             'produtos.*.id' => ['required', 'exists:produtos,id'],
             'produtos.*.quantidade' => ['required', 'integer', 'min:1'],
+        ], [
+            'cliente_id.exists' => 'O cliente informado não existe.',
+            'loja_id.exists' => 'A loja informada não existe.',
+            'vendedor_id.exists' => 'O vendedor informado não existe.',
+            'data_venda.date' => 'A data da venda deve ser uma data válida.',
+            'valor_total.numeric' => 'O valor total deve ser um número.',
+            'forma_pagamento.in' => 'A forma de pagamento informada é inválida.',
+            'produtos.required' => 'É necessário informar ao menos um produto.',
+            'produtos.*.quantidade.min' => 'A quantidade mínima de um produto é 1.',
         ]);
     
         $venda = Vendas::create($fields);
@@ -68,7 +77,7 @@ class VendasController extends Controller
             ]);
         }
         
-        return redirect()->route('vendas.index');
+        return redirect()->route('vendas.index')->with('success', 'Venda cadastrada com sucesso!');
     }
 
     /**
@@ -109,6 +118,15 @@ class VendasController extends Controller
             'produtos' => ['required', 'array'],
             'produtos.*.id' => ['required', 'exists:produtos,id'],
             'produtos.*.quantidade' => ['required', 'integer', 'min:1'],
+        ], [
+            'cliente_id.exists' => 'O cliente informado não existe.',
+            'loja_id.exists' => 'A loja informada não existe.',
+            'vendedor_id.exists' => 'O vendedor informado não existe.',
+            'data_venda.date' => 'A data da venda deve ser uma data válida.',
+            'valor_total.numeric' => 'O valor total deve ser um número.',
+            'forma_pagamento.in' => 'A forma de pagamento informada é inválida.',
+            'produtos.required' => 'É necessário informar ao menos um produto.',
+            'produtos.*.quantidade.min' => 'A quantidade mínima de um produto é 1.',
         ]);
     
         $venda->update($fields);
@@ -129,7 +147,7 @@ class VendasController extends Controller
             ]);
         }
     
-        return redirect()->route('vendas.index');
+        return redirect()->route('vendas.index')->with('success', 'Venda atualizada com sucesso!');
     }
 
     /**
@@ -143,7 +161,7 @@ class VendasController extends Controller
         
         $venda->delete();
 
-        return redirect()->route('vendas.index')->with('success', 'Venda excluída com sucesso!');
+        return redirect()->route('vendas.index')->with('success', 'Venda excluída com sucesso!')->with('success', 'Venda excluída com sucesso!');
     }
 
     /**
