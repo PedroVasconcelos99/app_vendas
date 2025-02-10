@@ -35,11 +35,15 @@ class ProdutosController extends Controller
             'nome' => ['required','string'],
             'cor' => ['required','string'],
             'valor' => ['required', 'numeric'],
+        ], [
+            'nome.required' => 'O campo nome é obrigatório',
+            'cor.required' => 'O campo cor é obrigatório',
+            'valor.required' => 'O campo valor é obrigatório',
         ]);
         // dd($fields);
         Produtos::create($fields);
 
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.index')->with('success', 'Produto cadastrado com sucesso!');
     }
 
     /**
@@ -69,11 +73,15 @@ class ProdutosController extends Controller
             'nome' => 'required|string|max:255',
             'cor' => 'required|string|max:255',
             'valor' => 'required|numeric',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório',
+            'cor.required' => 'O campo cor é obrigatório',
+            'valor.required' => 'O campo valor é obrigatório',
         ]);
         // dd($fields);
         $produto->update($fields);
 
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.index')->with('success', 'Produto atualizado com sucesso!');
     }
 
     /**
@@ -82,6 +90,6 @@ class ProdutosController extends Controller
     public function destroy(Produtos $produto)
     {
         $produto->delete();
-        return redirect()->route('produtos.index');
+        return redirect()->route('produtos.index')->with('success', 'Produto deletado com sucesso!');
     }
 }
