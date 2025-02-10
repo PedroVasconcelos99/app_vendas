@@ -1,4 +1,4 @@
-
+console.log('validarCnpj.js');
 // Função para validar CNPJ
 function validaCNPJ(cnpj) {
     cnpj = cnpj.replace(/[^\d]+/g, '');
@@ -47,7 +47,7 @@ function validaCNPJ(cnpj) {
 
 // Validação de CNPJ no formulário de cadastro de Loja
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('cadastrar_loja');
+    const form = document.getElementById('formulario_loja');
     if (form) {
         form.addEventListener('submit', function(e) {
             let cnpj = document.getElementById('cnpj').value;

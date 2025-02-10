@@ -42,12 +42,20 @@ class LojasController extends Controller
             'cidade'=>['required'],
             'uf'=>['required'],
             
+        ],[
+            'nome.required' => 'O campo nome é obrigatório',
+            'cnpj.required' => 'O campo cnpj é obrigatório',
+            'cep.required' => 'O campo cep é obrigatório',
+            'endereco.required' => 'O campo endereço é obrigatório',
+            'bairro.required' => 'O campo bairro é obrigatório',
+            'cidade.required' => 'O campo cidade é obrigatório',
+            'uf.required' => 'O campo uf é obrigatório',
         ]);
 
         // dd($fields);
        ; 
         lojas::create($fields);
-        return redirect()->route('lojas.index');
+        return redirect()->route('lojas.index')->with('success', 'Loja cadastrada com sucesso!');
     }
 
     /**
@@ -83,12 +91,20 @@ class LojasController extends Controller
             'cidade'=>['required'],
             'uf'=>['required'],
             
+        ],[
+            'nome.required' => 'O campo nome é obrigatório',
+            'cnpj.required' => 'O campo cnpj é obrigatório',
+            'cep.required' => 'O campo cep é obrigatório',
+            'endereco.required' => 'O campo endereço é obrigatório',
+            'bairro.required' => 'O campo bairro é obrigatório',
+            'cidade.required' => 'O campo cidade é obrigatório',
+            'uf.required' => 'O campo uf é obrigatório',
         ]);
 
         // dd($fields);
        ; 
         $loja->update($fields);
-        return redirect()->route('lojas.index');
+        return redirect()->route('lojas.index')->with('success', 'Loja atualizada com sucesso!');
     }
 
     /**
@@ -98,6 +114,6 @@ class LojasController extends Controller
     {
         $loja->delete();
 
-        return redirect()->route('lojas.index');
+        return redirect()->route('lojas.index')->with('success', 'Loja deletada com sucesso!');
     }
 }
