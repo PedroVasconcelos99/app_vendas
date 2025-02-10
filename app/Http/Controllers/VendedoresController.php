@@ -38,11 +38,15 @@ class VendedoresController extends Controller
             'id_loja'=>['required'],
             'nome'=>['required'],
             'cpf'=>['required'],
+        ], [
+            'id_loja.required' => 'O campo loja é obrigatório',
+            'nome.required' => 'O campo nome é obrigatório',
+            'cpf.required' => 'O campo cpf é obrigatório',
         ]);
         // dd($fields);
 
         Vendedores::create($fields);
-        return redirect()->route('vendedores.index');
+        return redirect()->route('vendedores.index')->with('success', 'Vendedor cadastrado com sucesso');
     }
 
     /**
@@ -72,11 +76,15 @@ class VendedoresController extends Controller
             'id_loja'=>['required'],
             'nome'=>['required'],
             'cpf'=>['required'],
+        ], [
+            'id_loja.required' => 'O campo loja é obrigatório',
+            'nome.required' => 'O campo nome é obrigatório',
+            'cpf.required' => 'O campo cpf é obrigatório',
         ]);
         // dd($fields);
 
         $vendedor->update($fields);
-        return redirect()->route('vendedores.index');
+        return redirect()->route('vendedores.index')->with('success', 'Vendedor atualizado com sucesso');
     }
 
     /**
@@ -86,6 +94,6 @@ class VendedoresController extends Controller
     {
         $vendedor->delete();
 
-        return redirect()->route('vendedores.index');
+        return redirect()->route('vendedores.index')->with('success', 'Vendedor deletado com sucesso');
     }
 }
