@@ -1,6 +1,7 @@
 <x-layout>
     <h1>Vendas</h1>
     <a class="mb-2" href="{{ route('vendas.create') }}"><b>+</b> Cadastrar nova venda</a>
+    <a class="mb-2" href="{{ route('vendas.relatorio') }}"><b>+</b> Relatorio</a>
     <div class="border-b p-2 my-2 grid grid-cols-8 text-center">
         <p>ID</p>
         <p>Cliente</p>

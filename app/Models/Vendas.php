@@ -34,4 +34,10 @@ class Vendas extends Model
     {
         return $this->belongsTo(Vendedores::class);
     }
+
+    public function produtos()
+    {
+        return $this->belongsToMany(Produtos::class, 'venda_produtos','id_venda','id_produto')->withPivot('quantidade', 'total');
+    }
+
 }

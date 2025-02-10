@@ -10,6 +10,7 @@ use App\Models\lojas;
 use App\Models\Produtos;
 use App\Models\VendaProduto;
 use App\Models\Vendedores;
+use Illuminate\Http\Request;
 
 class VendasController extends Controller
 {
@@ -143,5 +144,37 @@ class VendasController extends Controller
         $venda->delete();
 
         return redirect()->route('vendas.index')->with('success', 'Venda excluída com sucesso!');
+    }
+
+    /**
+     *  Exibindo relatório de vendas
+     */
+    public function relatorio(Request $request)
+    {
+        $clientes = Clientes::all();
+        $lojas = lojas::all();
+        $vendedores = Vendedores::all();
+    
+        $query = Vendas::query();
+    
+        if ($request->filled('data_inicio') && $request->filled('data_fim')) {
+            $query->whereBetween('data_venda', [$request->data_inicio, $request->data_fim]);
+        }
+    
+        if ($request->filled('cliente_id')) {
+            $query->where('cliente_id', $request->cliente_id);
+        }
+    
+        if ($request->filled('loja_id')) {
+            $query->where('loja_id', $request->loja_id);
+        }
+    
+        if ($request->filled('vendedor_id')) {
+            $query->where('vendedor_id', $request->vendedor_id);
+        }
+    
+        $vendas = $query->get();
+    
+        return view('vendas.relatorio', compact('vendas', 'clientes', 'lojas', 'vendedores'));
     }
 }
