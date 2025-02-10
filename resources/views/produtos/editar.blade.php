@@ -23,7 +23,7 @@
             </div>
             <div class="mb-4">
                 <label for="valor" class="block text-gray-700 font-bold mb-2">Valor</label>
-                <input type="number" name="valor" value="{{ old('valor', $produto->valor) }}" class="border rounded w-full py-2 px-3 text-gray-700 @error('valor') border-red-500 @enderror" step="0.01" min="0">
+                <input type="number" step="0.01" name="valor" value="{{ old('valor', $produto->valor) }}" class="border rounded w-full py-2 px-3 text-gray-700 @error('valor') border-red-500 @enderror" step="0.01" min="0">
                 @error('valor')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
