@@ -71,7 +71,7 @@ npm install
 Crie uma cópia do arquivo `.env.example` e ajuste as variáveis conforme necessário (banco de dados, chave da aplicação, etc.):
 
 ```bash
-cp .env.example .env
+copy .env.example .env
 ```
 
 ---
