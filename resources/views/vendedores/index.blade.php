@@ -4,7 +4,7 @@
             {{ session('success') }}
         </div>
     @endif
-    <h1 class="text-center text-4xl">Vendedores</h1>
+    <h1 class="text-center font-bold text-4xl">Vendedores</h1>
     <div class="flex justify-between items-center mb-4">
         <a class="rounded py-2 px-4 bg-blue-700 text-white hover:bg-blue-950/90 transition-all duration-300" href="{{ route('vendedores.create') }}">Cadastrar novo vendedor</a>
         <a href="{{ route('home') }}" class="bg-gray-500 text-white px-4 py-2 rounded text-right hover:bg-gray-700 transition-all duration-300">Voltar</a>

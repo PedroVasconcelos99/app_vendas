@@ -31,5 +31,11 @@
                 <p class="text-gray-600">Gerenciar vendas</p>
             </a>
         </div>
+        <div class="rounded-lg bg-white border shadow-sm p-6 cursor-pointer  hover:bg-gray-200/90 transition-all duration-300">
+            <a href="{{route('vendas.relatorio')}}">
+                <h2 class="text-xl font-semibold mb-2">Relatório de vendas</h2>
+                <p class="text-gray-600">Visualizar vendas.</p>
+            </a>
+        </div>
     </div>
 </x-layout>
