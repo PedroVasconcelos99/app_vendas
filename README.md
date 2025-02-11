@@ -1,71 +1,148 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# **App Vendas**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema de vendas criado como parte do teste da empresa **SGASoft**.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## **Sobre o Projeto**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Este projeto é um sistema de vendas desenvolvido em Laravel. Ele inclui funcionalidades como:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Gerenciamento de clientes.
+- Controle de lojas, vendedores e produtos.
+- Cadastro e acompanhamento de vendas.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## **Requisitos**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Certifique-se de ter os seguintes itens instalados no seu sistema:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **PHP** >= 8.0 ([Download PHP](https://www.php.net/))
+- **Composer** ([Download Composer](https://getcomposer.org/))
+- **Node.js** ([Download Node.js](https://nodejs.org/pt))
+- **MySQL** (ou outro banco de dados compatível)
 
-## Laravel Sponsors
+> ⚙️ **Dica**: Utilize o [XAMPP](https://www.apachefriends.org/pt_br/index.html) para configurar facilmente um ambiente local com PHP e MySQL.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## **Instalação**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Siga os passos abaixo para configurar e executar o projeto localmente.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### **Passo 1: Clonar o Repositório**
 
-## Code of Conduct
+No terminal, execute:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/PedroVasconcelos99/app_vendas.git
+cd app_vendas
+```
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **Passo 2: Instalar Dependências do PHP**
 
-## License
+No diretório do projeto, instale as dependências do Laravel:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# appVendas
-Sistema de vendas criados para o teste da empresa sgasoft
->>>>>>> 07de8f39446f34368b6f1aeb4b14e883966f0410
+```bash
+composer install
+```
+
+> ⚠️ **Nota**: Se ocorrer um erro relacionado ao `zip`, ative a extensão `zip` no arquivo de configuração do PHP (`php.ini`).
+
+---
+
+### **Passo 3: Instalar Dependências do Node.js**
+
+Instale as dependências do frontend:
+
+```bash
+npm install
+```
+
+---
+
+### **Passo 4: Configurar o Arquivo `.env`**
+
+Crie uma cópia do arquivo `.env.example` e ajuste as variáveis conforme necessário (banco de dados, chave da aplicação, etc.):
+
+```bash
+cp .env.example .env
+```
+
+---
+
+### **Passo 5: Gerar a Chave da Aplicação**
+
+Gere a chave única da aplicação:
+
+```bash
+php artisan key:generate
+```
+
+---
+
+### **Passo 6: Executar Migrações**
+
+Crie as tabelas no banco de dados e preencha dados iniciais:
+
+```bash
+php artisan migrate --seed
+```
+
+---
+
+### **Passo 7: Compilar os Assets Frontend**
+
+Compile os arquivos CSS/JavaScript para desenvolvimento:
+
+```bash
+npm run dev
+```
+
+Para produção, use:
+
+```bash
+npm run build
+```
+
+---
+
+### **Passo 8: Iniciar o Servidor**
+
+No terminal, execute:
+
+```bash
+php artisan serve
+```
+
+A aplicação estará disponível em [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+---
+
+## **Problemas Comuns**
+
+- **Erro ao instalar dependências PHP (`zip` não ativado):**
+  - Habilite a extensão `zip` no arquivo `php.ini`.
+
+- **Erro ao rodar migrações:**
+  - Verifique as credenciais do banco de dados no arquivo `.env`.
+
+- **Problemas com permissão:**
+  - Certifique-se de que as pastas `storage` e `bootstrap/cache` têm permissão de gravação:
+    ```bash
+    chmod -R 775 storage bootstrap/cache
+    ```
+
+---
+
+## **Suporte**
+
+Se você encontrar problemas ou tiver dúvidas, entre em contato pelo [GitHub Issues](https://github.com/PedroVasconcelos99/app_vendas/issues).
+
+**Obrigado por usar o App Vendas!** 🚀
+
