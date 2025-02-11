@@ -102,6 +102,28 @@
         </form>
     </div>
     <script>
+         // Filtrar vendedores de acordo com a loja selecionada
+         function filtrarVendedores() {
+            const lojaId = document.getElementById('loja_id').value;
+            const vendedorSelect = document.getElementById('vendedor_id');
+            
+            // Limpar opções atuais
+            vendedorSelect.innerHTML = '<option value="">Selecione um vendedor</option>';
+
+            if (lojaId) {
+                fetch(`/vendedores/loja/${lojaId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(vendedor => {
+                            const option = document.createElement('option');
+                            option.value = vendedor.id;
+                            option.textContent = vendedor.nome;
+                            vendedorSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao buscar vendedores:', error));
+            }
+        }
        
         const produtosOptions = `
             @foreach($produtos as $produto)

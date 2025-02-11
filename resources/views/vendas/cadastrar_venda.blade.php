@@ -21,7 +21,7 @@
 
             <div class="mb-4">
                 <label for="loja_id" class="block text-gray-700 font-bold mb-2">Loja</label>
-                <select name="loja_id" class="border rounded w-full py-2 px-3 text-gray-700 @error('loja_id') border-red-500 @enderror">
+                <select id="loja_id" name="loja_id" onchange="filtrarVendedores()" class="border rounded w-full py-2 px-3 text-gray-700 @error('loja_id') border-red-500 @enderror">
                     <option value="">Selecione uma loja</option>
                     @foreach($lojas as $loja)
                         <option value="{{ $loja->id }}" {{ old('loja_id') == $loja->id ? 'selected' : '' }}>{{ $loja->nome }}</option>
@@ -34,7 +34,7 @@
 
             <div class="mb-4">
                 <label for="vendedor_id" class="block text-gray-700 font-bold mb-2">Vendedor</label>
-                <select name="vendedor_id" class="border rounded w-full py-2 px-3 text-gray-700 @error('vendedor_id') border-red-500 @enderror">
+                <select id="vendedor_id" name="vendedor_id" class="border rounded w-full py-2 px-3 text-gray-700 @error('vendedor_id') border-red-500 @enderror">
                     <option value="">Selecione um vendedor</option>
                     @foreach($vendedores as $vendedor)
                         <option value="{{ $vendedor->id }}" {{ old('vendedor_id') == $vendedor->id ? 'selected' : '' }}>{{ $vendedor->nome }}</option>
@@ -97,7 +97,28 @@
         </form>
     </div>
     <script>
-       
+        // Filtrar vendedores de acordo com a loja selecionada
+        function filtrarVendedores() {
+            const lojaId = document.getElementById('loja_id').value;
+            const vendedorSelect = document.getElementById('vendedor_id');
+            
+            // Limpar opções atuais
+            vendedorSelect.innerHTML = '<option value="">Selecione um vendedor</option>';
+
+            if (lojaId) {
+                fetch(`/vendedores/loja/${lojaId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(vendedor => {
+                            const option = document.createElement('option');
+                            option.value = vendedor.id;
+                            option.textContent = vendedor.nome;
+                            vendedorSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao buscar vendedores:', error));
+            }
+        }
         const produtosOptions = `
             @foreach($produtos as $produto)
                 <option value="{{ $produto->id }}" data-valor="{{ $produto->valor }}">{{ $produto->nome }}</option>

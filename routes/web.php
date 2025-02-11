@@ -9,10 +9,11 @@ use App\Http\Controllers\VendedoresController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/vendas/relatorio', [VendasController::class, 'relatorio'])->name('vendas.relatorio');
-Route::resource('clientes', ClientesController::class);
+Route::get('/vendedores/loja/{lojaId}', [VendedoresController::class, 'getVendedoresByLoja']);
+Route::resource('clientes', ClientesController::class); 
 Route::resource('lojas', LojasController::class);
 Route::resource('vendedores', VendedoresController::class)->parameters([
     'vendedores' => 'vendedor']);
-Route::resource('produtos', ProdutosController::class);
-Route::resource('vendas', VendasController::class);
-Route::view('/','index')->name('home');
+    Route::resource('produtos', ProdutosController::class);
+    Route::resource('vendas', VendasController::class);
+    Route::view('/','index')->name('home');

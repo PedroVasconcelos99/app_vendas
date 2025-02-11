@@ -96,4 +96,11 @@ class VendedoresController extends Controller
 
         return redirect()->route('vendedores.index')->with('success', 'Vendedor deletado com sucesso');
     }
+
+    // buscar vendedor por loja
+    public static function getVendedoresByLoja($lojaId)
+    {
+        $vendedores = Vendedores::where('id_loja', $lojaId)->get();
+        return response()->json($vendedores);
+    }
 }
